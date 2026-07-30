@@ -5,27 +5,20 @@ Configuración global y comandos personalizados para [OpenCode](https://opencode
 ## Archivos
 
 - `opencode.jsonc` — Configuración del proyecto para OpenCode
-- `commands/` — Comandos personalizados de proyecto
+- `commands/` — Comandos slash personalizados
 
-## Instalación global de comandos
-
-Los comandos en `commands/` se instalan a nivel global para que estén disponibles en cualquier proyecto.
-
-Primero clona el repo y navega a él:
+## Instalación
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/dejeloper/ai-support.git
 cd ai-support
 ```
 
 ### Windows (PowerShell)
 
 ```powershell
-# Copiar todos los comandos al directorio global de OpenCode
 Copy-Item -Path ".\opencode\commands\*" -Destination "$env:USERPROFILE\.config\opencode\commands\" -Recurse -Force
 ```
-
-Para instalarlos solo en el proyecto actual, copia los comandos a `.opencode/commands/` dentro del proyecto.
 
 ### macOS / Linux
 
@@ -33,24 +26,18 @@ Para instalarlos solo en el proyecto actual, copia los comandos a `.opencode/com
 cp -r opencode/commands/* ~/.config/opencode/commands/
 ```
 
-Para el proyecto actual:
+Para instalación local (solo el proyecto actual), copia a `.opencode/commands/`.
 
-```bash
-cp -r opencode/commands/* .opencode/commands/
-```
+Coloca `opencode.jsonc` en la raíz del proyecto o en `~/.config/opencode/config.jsonc` para uso global.
 
-### Uso
+## Comandos
 
-Una vez instalados, los comandos están disponibles escribiendo `/` en el chat de OpenCode:
-
-- `/commit-all`
-- `/commit-this`
-- `/fix-gitignore`
-- `/pre-commit`
-- `/pre-pr`
-- `/update-plan`
-- `/update-readme`
-
-## Configuración
-
-El archivo `opencode.jsonc` se coloca en la raíz del proyecto para configurar OpenCode. Para uso global, colócalo en `~/.config/opencode/config.jsonc`.
+| Comando | Descripción |
+|---------|-------------|
+| `/commit-all` | Agrupa cambios en commits semánticos con validación y control de push |
+| `/commit-this` | Genera un mensaje de commit convencional en inglés con bullets en español para los cambios de la sesión actual |
+| `/fix-gitignore` | Limpia la caché de git para que las reglas actuales de `.gitignore` se apliquen correctamente |
+| `/pre-commit` | Revisa los cambios staged y sugiere mensajes de commit agrupados por scope |
+| `/pre-pr` | Genera título, descripción y recursos visuales sugeridos para un PR a partir del diff con `origin/main` |
+| `/update-plan` | Crea o actualiza `planning.md` marcando tareas implementadas. Soporta `--commit` para hacer commit automático |
+| `/update-readme` | Analiza el proyecto y actualiza `README.md` con todas las secciones requeridas |

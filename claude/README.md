@@ -4,24 +4,19 @@ Configuración global y comandos personalizados para [Claude Code](https://docs.
 
 ## Archivos
 
-- `settings.json` — Configuración global del cliente Claude Code (modelo, tema, etc.)
-- `commands/` — Comandos personalizados de proyecto
+- `settings.json` — Configuración del cliente (modelo, tema, etc.)
+- `commands/` — Comandos slash personalizados
 
-## Instalación global de comandos
-
-Los comandos en `commands/` se instalan a nivel global para que estén disponibles en cualquier proyecto.
-
-Primero clona el repo y navega a él:
+## Instalación
 
 ```bash
-git clone <repo-url>
+git clone https://github.com/dejeloper/ai-support.git
 cd ai-support
 ```
 
 ### Windows (PowerShell)
 
 ```powershell
-# Copiar todos los comandos al directorio global de Claude Code
 Copy-Item -Path ".\claude\commands\*" -Destination "$env:USERPROFILE\.claude\commands\" -Recurse -Force
 ```
 
@@ -31,17 +26,15 @@ Copy-Item -Path ".\claude\commands\*" -Destination "$env:USERPROFILE\.claude\com
 cp claude/commands/* ~/.claude/commands/
 ```
 
-### Uso
+Copia `settings.json` a `~/.claude/settings.json` para aplicar la configuración global.
 
-Una vez instalados, los comandos están disponibles escribiendo `/` en el chat de Claude Code:
+## Comandos
 
-- `/commit-this`
-- `/fix-gitignore`
-- `/pre-commit`
-- `/pre-pr`
-- `/update-plan`
-- `/update-readme`
-
-## Instalación de settings.json
-
-Copia `settings.json` a `~/.claude/settings.json` (global) o al `settings.json` del proyecto.
+| Comando | Descripción |
+|---------|-------------|
+| `/commit-this` | Genera un mensaje de commit convencional en inglés con bullets en español para los cambios de la sesión actual |
+| `/fix-gitignore` | Limpia la caché de git para que las reglas actuales de `.gitignore` se apliquen correctamente |
+| `/pre-commit` | Revisa los cambios staged y sugiere mensajes de commit agrupados por scope |
+| `/pre-pr` | Genera título, descripción y recursos visuales sugeridos para un PR a partir del diff con `origin/main` |
+| `/update-plan` | Crea o actualiza `planning.md` marcando tareas implementadas. Soporta `--commit` para hacer commit automático |
+| `/update-readme` | Analiza el proyecto y actualiza `README.md` con todas las secciones requeridas |
