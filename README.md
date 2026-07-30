@@ -18,13 +18,15 @@ Centralizar y versionar los comandos personalizados y configuraciones usados ent
 
 ```
 ai-support/
-├── [claude/](claude/README.md)          # Configuración para Claude Code
+├── claude/          # Configuración para Claude Code
 │   ├── settings.json
 │   └── commands/    # Comandos personalizados para Claude
-└── [opencode/](opencode/README.md)      # Configuración para OpenCode
+└── opencode/        # Configuración para OpenCode
     ├── opencode.jsonc
     └── commands/    # Comandos personalizados para OpenCode
 ```
+
+Ver README de cada agente: [claude/](claude/README.md) · [opencode/](opencode/README.md)
 
 ## Instalación global
 
@@ -32,4 +34,6 @@ Cada subdirectorio tiene su propio README con instrucciones de instalación. En 
 
 ## Licencia
 
-No especificada. Consultar en el [repositorio](https://github.com/dejeloper/ai-support).
+[Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)](https://creativecommons.org/licenses/by-nc/4.0/).
+
+Puedes copiar, modificar y compartir esto, pero no lo uses para lucrar. Si lo haces, avisa.
