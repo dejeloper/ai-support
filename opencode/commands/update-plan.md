@@ -1,12 +1,19 @@
 ---
-description: Create or update planning.md — mark implemented tasks and process new ones
+description: Create or update planning.md — optionally commit the changes
 ---
+
+This command accepts an optional flag:
+
+- `--commit` → update `planning.md` and create a git commit.
+- No flag → only update `planning.md`.
+
+Determine whether the `--commit` flag was provided before executing the final step.
 
 Check the project for a file called `planning.md` in the root directory.
 
 If it does not exist:
 
-- Explore the project to understand its name, description, and structure
+- Explore the project to understand its name, description, and structure.
 - Create `planning.md` with this exact format:
 
 # Project Name
@@ -26,41 +33,74 @@ Project description (if available)
 
 - Use this format to add new tasks
 
-- Run `git add planning.md` and `git commit -m "chore(planning): initialize planning.md"`
-- Stop, do not continue
+## Actualizado
 
-If it exists, execute all of the following steps:
+- YYYY-MM-DD HH:mm
 
-**Step 1 — Mark implemented tasks:**
-
-- Read `planning.md` and explore the full project code
-- For each unchecked item `- [ ]` under `## Plan`, determine if it is already implemented
-- If implemented, change `- [ ]` to `- [x]` — do not change the text, do not remove or add items
-
-**Step 2 — Process new tasks from `## Nuevas tareas`:**
-
-- Read each `- <task>` item listed under `## Nuevas tareas`
-- For each item, analyze the task and determine which module and submodule it belongs to within `## Plan`
-- Convert it to `- [ ] Task` and insert it in the correct module/submodule section
-- If the module or submodule does not exist yet, create it following the same heading format (### Module / #### Submodule)
-- After moving all items, leave `## Nuevas tareas` empty with only the placeholder line: `- Use this format to add new tasks`
-
-**Step 3 — Commit:**
+If the `--commit` flag was provided:
 
 - Run `git add planning.md`
-- Generate a commit message following strict conventional commits: type(scope): description
-- Run `git commit -m "type(scope): description"`
+- Run `git commit -m "chore(planning): initialize planning.md"`
 
-The commit message must follow this format:
-type(scope): description in English
+Stop. Do not continue.
 
-- Acción en español
-- Acción en español
+---
+
+If `planning.md` already exists, execute the following steps.
+
+## Step 1 — Mark implemented tasks
+
+- Read `planning.md` and explore the entire project.
+- For every unchecked task (`- [ ]`) under `## Plan`, determine whether it has already been implemented.
+- If implemented, change it to `- [x]`.
+- Do not modify the task text.
+- Do not remove, rewrite, or reorder existing tasks.
+
+## Step 2 — Process new tasks
+
+- Read every item under `## Nuevas tareas`.
+- Determine the appropriate module and submodule for each task.
+- Convert each item into a checkbox (`- [ ] Task`) and insert it into the correct location under `## Plan`.
+- If the required module or submodule does not exist, create it using the existing heading structure.
+- After processing all tasks, leave `## Nuevas tareas` containing only:
+
+- Use this format to add new tasks
+
+## Step 3 — Update timestamp
+
+Update the `## Actualizado` section with the current date and time.
+
+## Step 4 — Optional commit
+
+Only execute this step if the `--commit` flag was provided.
+
+- Run `git add planning.md`.
+- Generate a Conventional Commit message using the format:
+
+type(scope): description
+
+where:
+
+- `type(scope): description` must be written in English.
+- The optional commit body must be written in Spanish.
+
+Example:
+
+feat(planning): update project planning
+
+- Marca tareas implementadas
+- Procesa nuevas tareas
+
+Run:
+
+git commit -m "type(scope): description"
 
 Rules:
 
-- Only modify checkbox state and process new tasks — do not rewrite or reorder existing items
-- `## Nuevas tareas` is always present at the bottom of the file, before `## Actualizado`
-- `## Actualizado` is always the last section of the file
-- Only commit planning.md, nothing else
-- Do not ask for confirmation, execute all steps
+- Only modify checkbox states, process new tasks, and update the timestamp.
+- Do not rewrite existing task descriptions.
+- Do not reorder existing tasks.
+- `## Nuevas tareas` must always appear before `## Actualizado`.
+- `## Actualizado` must always be the last section.
+- Only stage and commit `planning.md`.
+- Do not ask for confirmation.
