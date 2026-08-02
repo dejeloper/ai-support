@@ -38,3 +38,4 @@ Copia `settings.json` a `~/.claude/settings.json` para aplicar la configuración
 | `/pre-pr` | Genera título, descripción y recursos visuales sugeridos para un PR a partir del diff con `origin/main` |
 | `/update-plan` | Crea o actualiza `planning.md` marcando tareas implementadas. Soporta `--commit` para hacer commit automático |
 | `/update-readme` | Analiza el proyecto y actualiza `README.md` con todas las secciones requeridas |
+| `/use-council` | Convoca un consejo local de 4 roles (Seguridad, Rendimiento, Mantenibilidad, Abogado del Diablo) para analizar una pregunta sobre el código del proyecto, con opción `--impl` para implementar las recomendaciones una a una |
